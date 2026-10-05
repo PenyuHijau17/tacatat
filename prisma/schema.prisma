@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  admin
+  writter
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(writter)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  diaries   Diary[]
+}
+
+model Diary {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  mood      String
+  image     String?
+  isPublic  Boolean  @default(true)
+  authorId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author User @relation(fields: [authorId], references: [id])
+}

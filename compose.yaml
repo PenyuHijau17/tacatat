@@ -1,0 +1,32 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+      - "51212:51212"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - WATCHPACK_POLLING=true
+      - DATABASE_URL=postgresql://tacatat:tacatat@db:5432/tacatat
+    depends_on:
+      - db
+    command: npm run dev
+
+  db:
+    image: postgres:17-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: tacatat
+      POSTGRES_PASSWORD: tacatat
+      POSTGRES_DB: tacatat
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
