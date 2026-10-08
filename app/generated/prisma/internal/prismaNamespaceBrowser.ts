@@ -60,6 +60,7 @@ export const ModelName = {
   Report: 'Report',
   Like: 'Like',
   Bookmark: 'Bookmark',
+  Notification: 'Notification',
   Comment: 'Comment'
 } as const
 
@@ -194,6 +195,19 @@ export const BookmarkScalarFieldEnum = {
 } as const
 
 export type BookmarkScalarFieldEnum = (typeof BookmarkScalarFieldEnum)[keyof typeof BookmarkScalarFieldEnum]
+
+
+export const NotificationScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  message: 'message',
+  url: 'url',
+  read: 'read',
+  userId: 'userId',
+  createdAt: 'createdAt'
+} as const
+
+export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
 
 
 export const CommentScalarFieldEnum = {

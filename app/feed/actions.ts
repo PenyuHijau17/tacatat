@@ -18,8 +18,14 @@ async function requirePublicDiary(id: number) {
   return { session, diary };
 }
 
+async function notify(userId: string, type: string, message: string, url?: string) {
+  await prisma.notification.create({
+    data: { userId, type, message, url },
+  });
+}
+
 export async function toggleLike(id: number) {
-  const { session } = await requirePublicDiary(id);
+  const { session, diary } = await requirePublicDiary(id);
 
   const existing = await prisma.like.findUnique({
     where: { diaryId_userId: { diaryId: id, userId: session.user.id } },
@@ -31,6 +37,10 @@ export async function toggleLike(id: number) {
     await prisma.like.create({
       data: { diaryId: id, userId: session.user.id },
     });
+
+    if (diary.authorId !== session.user.id) {
+      await notify(diary.authorId, "like", `${session.user.name} memberi like pada diary Anda`, `/feed/${id}`);
+    }
   }
 
   revalidatePath(`/feed/${id}`);
@@ -72,7 +82,7 @@ export async function toggleBookmark(id: number) {
 }
 
 export async function addComment(id: number, formData: FormData) {
-  const { session } = await requirePublicDiary(id);
+  const { session, diary } = await requirePublicDiary(id);
 
   const content = String(formData.get("content") ?? "").trim();
   if (!content) {
@@ -82,6 +92,10 @@ export async function addComment(id: number, formData: FormData) {
   await prisma.comment.create({
     data: { diaryId: id, userId: session.user.id, content },
   });
+
+  if (diary.authorId !== session.user.id) {
+    await notify(diary.authorId, "comment", `${session.user.name} berkomentar pada diary Anda`, `/feed/${id}`);
+  }
 
   revalidatePath(`/feed/${id}`);
 }

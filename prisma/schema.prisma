@@ -31,6 +31,7 @@ model User {
   reports       Report[]
   following     Follow[] @relation("following")
   followers     Follow[] @relation("followers")
+  notifications Notification[]
 }
 
 model Session {
@@ -155,6 +156,18 @@ model Bookmark {
   user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([diaryId, userId])
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  type      String
+  message   String
+  url       String?
+  read      Boolean  @default(false)
+  userId    String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Comment {

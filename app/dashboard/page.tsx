@@ -27,6 +27,9 @@ export default async function DashboardPage() {
       <p>
         <Link href="/bookmarks">Bookmark</Link>
       </p>
+      <p>
+        <Link href="/notifications">Notifikasi</Link>
+      </p>
 
       <LogoutButton />
     </main>

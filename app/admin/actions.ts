@@ -32,6 +32,15 @@ export async function blockDiary(id: number) {
     data: { status: "draft", moderationStatus: "blocked" },
   });
 
+  await prisma.notification.create({
+    data: {
+      userId: diary.authorId,
+      type: "blocked",
+      message: `Diary "${diary.title}" di-block admin`,
+      url: `/diaries/${id}`,
+    },
+  });
+
   revalidatePath("/admin");
   revalidatePath("/feed");
   revalidatePath("/explore");
@@ -49,6 +58,15 @@ export async function reviseDiary(id: number) {
   await prisma.diary.update({
     where: { id },
     data: { status: "draft", moderationStatus: "revision" },
+  });
+
+  await prisma.notification.create({
+    data: {
+      userId: diary.authorId,
+      type: "revision",
+      message: `Diary "${diary.title}" perlu direvisi sebelum bisa tampil lagi`,
+      url: `/diaries/${id}/edit`,
+    },
   });
 
   revalidatePath("/admin");
