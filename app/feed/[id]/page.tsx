@@ -3,6 +3,7 @@ import Link from "next/link";
 import { prisma } from "@/app/lib/prisma";
 import { getSession } from "@/app/lib/session";
 import { toggleLike, addComment, toggleBookmark, reportDiary } from "../actions";
+import ShareButton from "../share-button";
 
 export default async function PublicDiaryPage({
   params,
@@ -56,6 +57,9 @@ export default async function PublicDiaryPage({
       <p>{diary.content}</p>
 
       <p>{diary.likes.length} like</p>
+
+      <ShareButton />
+
       {session ? (
         <form action={toggleLikeWithId}>
           <button type="submit" className="rounded bg-zinc-900 px-4 py-2 text-white">
