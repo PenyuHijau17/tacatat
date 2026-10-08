@@ -15,3 +15,21 @@ export const Role = {
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const DiaryStatus = {
+  draft: 'draft',
+  public: 'public',
+  private: 'private'
+} as const
+
+export type DiaryStatus = (typeof DiaryStatus)[keyof typeof DiaryStatus]
+
+
+export const DiaryModeration = {
+  none: 'none',
+  blocked: 'blocked',
+  revision: 'revision'
+} as const
+
+export type DiaryModeration = (typeof DiaryModeration)[keyof typeof DiaryModeration]

@@ -895,7 +895,8 @@ export const DiaryScalarFieldEnum = {
   content: 'content',
   mood: 'mood',
   image: 'image',
-  isPublic: 'isPublic',
+  status: 'status',
+  moderationStatus: 'moderationStatus',
   authorId: 'authorId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -994,6 +995,34 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DiaryStatus'
+ */
+export type EnumDiaryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiaryStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'DiaryStatus[]'
+ */
+export type ListEnumDiaryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiaryStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DiaryModeration'
+ */
+export type EnumDiaryModerationFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiaryModeration'>
+    
+
+
+/**
+ * Reference to a field of type 'DiaryModeration[]'
+ */
+export type ListEnumDiaryModerationFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiaryModeration[]'>
     
 
 

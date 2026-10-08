@@ -139,7 +139,8 @@ export const DiaryScalarFieldEnum = {
   content: 'content',
   mood: 'mood',
   image: 'image',
-  isPublic: 'isPublic',
+  status: 'status',
+  moderationStatus: 'moderationStatus',
   authorId: 'authorId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

@@ -1,30 +1,28 @@
-"use client";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getSession } from "@/app/lib/session";
+import LogoutButton from "./logout-button";
 
-import { useEffect } from "react";
-import { authClient } from "@/app/lib/auth-client";
-
-export default function DashboardPage() {
-  const { data: session, isPending } = authClient.useSession();
-
-  useEffect(() => {
-    if (!isPending && !session) {
-      window.location.href = "/login";
-    }
-  }, [session, isPending]);
-
-  if (isPending) {
-    return <main>Loading...</main>;
-  }
+export default async function DashboardPage() {
+  const session = await getSession();
 
   if (!session) {
-    return null;
+    redirect("/login");
   }
 
   return (
     <main>
       <h1>Dashboard</h1>
+
       <p>Selamat datang, {session.user.name}</p>
       <p>Email: {session.user.email}</p>
+      <p>Role: {session.user.role}</p>
+
+      <p>
+        <Link href="/diaries">Private Space</Link>
+      </p>
+
+      <LogoutButton />
     </main>
   );
 }

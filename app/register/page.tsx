@@ -1,9 +1,11 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { authClient } from "@/app/lib/auth-client";
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,10 +31,14 @@ export default function RegisterPage() {
     }
 
     if (data) {
-      setMessage("Registrasi berhasil");
+      setMessage("Registrasi berhasil, mengalihkan ke halaman login...");
       setName("");
       setEmail("");
       setPassword("");
+      setTimeout(() => {
+        router.push("/login");
+      }, 1000);
+      return;
     }
 
     setLoading(false);

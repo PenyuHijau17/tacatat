@@ -1,9 +1,11 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { authClient } from "@/app/lib/auth-client";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -27,7 +29,9 @@ export default function LoginPage() {
     }
 
     if (data) {
-      setMessage("Login berhasil");
+      router.push("/dashboard");
+      router.refresh();
+      return;
     }
 
     setLoading(false);
