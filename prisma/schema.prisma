@@ -27,6 +27,7 @@ model User {
   diaries       Diary[]
   likes         Like[]
   comments      Comment[]
+  bookmarks     Bookmark[]
 }
 
 model Session {
@@ -102,9 +103,22 @@ model Diary {
 
   likes    Like[]
   comments Comment[]
+  bookmarks Bookmark[]
 }
 
 model Like {
+  id        Int      @id @default(autoincrement())
+  diaryId   Int
+  userId    String
+  createdAt DateTime @default(now())
+
+  diary Diary @relation(fields: [diaryId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([diaryId, userId])
+}
+
+model Bookmark {
   id        Int      @id @default(autoincrement())
   diaryId   Int
   userId    String

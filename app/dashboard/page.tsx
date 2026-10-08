@@ -24,6 +24,9 @@ export default async function DashboardPage() {
       <p>
         <Link href="/profile">Profile</Link>
       </p>
+      <p>
+        <Link href="/bookmarks">Bookmark</Link>
+      </p>
 
       <LogoutButton />
     </main>

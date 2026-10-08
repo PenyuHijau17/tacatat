@@ -57,6 +57,7 @@ export const ModelName = {
   Verification: 'Verification',
   Diary: 'Diary',
   Like: 'Like',
+  Bookmark: 'Bookmark',
   Comment: 'Comment'
 } as const
 
@@ -160,6 +161,16 @@ export const LikeScalarFieldEnum = {
 } as const
 
 export type LikeScalarFieldEnum = (typeof LikeScalarFieldEnum)[keyof typeof LikeScalarFieldEnum]
+
+
+export const BookmarkScalarFieldEnum = {
+  id: 'id',
+  diaryId: 'diaryId',
+  userId: 'userId',
+  createdAt: 'createdAt'
+} as const
+
+export type BookmarkScalarFieldEnum = (typeof BookmarkScalarFieldEnum)[keyof typeof BookmarkScalarFieldEnum]
 
 
 export const CommentScalarFieldEnum = {

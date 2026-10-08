@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/app/lib/prisma";
 import { getSession } from "@/app/lib/session";
-import { toggleLike, addComment } from "../actions";
+import { toggleLike, addComment, toggleBookmark } from "../actions";
 
 export default async function PublicDiaryPage({
   params,
@@ -20,6 +20,7 @@ export default async function PublicDiaryPage({
     include: {
       author: { select: { name: true } },
       likes: true,
+      bookmarks: true,
       comments: {
         orderBy: { createdAt: "asc" },
         include: { user: { select: { name: true } } },
@@ -35,7 +36,11 @@ export default async function PublicDiaryPage({
 
   const session = await getSession();
   const toggleLikeWithId = toggleLike.bind(null, diary.id);
+  const toggleBookmarkWithId = toggleBookmark.bind(null, diary.id);
   const addCommentWithId = addComment.bind(null, diary.id);
+  const isBookmarked = session
+    ? diary.bookmarks.some((bookmark) => bookmark.userId === session.user.id)
+    : false;
 
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-6">
@@ -57,6 +62,16 @@ export default async function PublicDiaryPage({
         </form>
       ) : (
         <p>Login untuk memberi like.</p>
+      )}
+
+      {session ? (
+        <form action={toggleBookmarkWithId}>
+          <button type="submit" className="rounded border border-zinc-300 px-4 py-2">
+            {isBookmarked ? "Hapus Bookmark" : "Bookmark"}
+          </button>
+        </form>
+      ) : (
+        <p>Login untuk mem-bookmark.</p>
       )}
 
       <h2 className="text-xl font-semibold">Komentar</h2>

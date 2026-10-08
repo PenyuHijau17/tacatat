@@ -37,6 +37,25 @@ export async function toggleLike(id: number) {
   revalidatePath("/feed");
 }
 
+export async function toggleBookmark(id: number) {
+  const { session } = await requirePublicDiary(id);
+
+  const existing = await prisma.bookmark.findUnique({
+    where: { diaryId_userId: { diaryId: id, userId: session.user.id } },
+  });
+
+  if (existing) {
+    await prisma.bookmark.delete({ where: { id: existing.id } });
+  } else {
+    await prisma.bookmark.create({
+      data: { diaryId: id, userId: session.user.id },
+    });
+  }
+
+  revalidatePath(`/feed/${id}`);
+  revalidatePath("/bookmarks");
+}
+
 export async function addComment(id: number, formData: FormData) {
   const { session } = await requirePublicDiary(id);
 

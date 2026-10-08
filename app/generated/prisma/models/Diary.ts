@@ -263,6 +263,7 @@ export type DiaryWhereInput = {
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   likes?: Prisma.LikeListRelationFilter
   comments?: Prisma.CommentListRelationFilter
+  bookmarks?: Prisma.BookmarkListRelationFilter
 }
 
 export type DiaryOrderByWithRelationInput = {
@@ -280,6 +281,7 @@ export type DiaryOrderByWithRelationInput = {
   author?: Prisma.UserOrderByWithRelationInput
   likes?: Prisma.LikeOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
+  bookmarks?: Prisma.BookmarkOrderByRelationAggregateInput
 }
 
 export type DiaryWhereUniqueInput = Prisma.AtLeast<{
@@ -300,6 +302,7 @@ export type DiaryWhereUniqueInput = Prisma.AtLeast<{
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   likes?: Prisma.LikeListRelationFilter
   comments?: Prisma.CommentListRelationFilter
+  bookmarks?: Prisma.BookmarkListRelationFilter
 }, "id">
 
 export type DiaryOrderByWithAggregationInput = {
@@ -351,6 +354,7 @@ export type DiaryCreateInput = {
   author: Prisma.UserCreateNestedOneWithoutDiariesInput
   likes?: Prisma.LikeCreateNestedManyWithoutDiaryInput
   comments?: Prisma.CommentCreateNestedManyWithoutDiaryInput
+  bookmarks?: Prisma.BookmarkCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryUncheckedCreateInput = {
@@ -367,6 +371,7 @@ export type DiaryUncheckedCreateInput = {
   updatedAt?: Date | string
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutDiaryInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutDiaryInput
+  bookmarks?: Prisma.BookmarkUncheckedCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryUpdateInput = {
@@ -382,6 +387,7 @@ export type DiaryUpdateInput = {
   author?: Prisma.UserUpdateOneRequiredWithoutDiariesNestedInput
   likes?: Prisma.LikeUpdateManyWithoutDiaryNestedInput
   comments?: Prisma.CommentUpdateManyWithoutDiaryNestedInput
+  bookmarks?: Prisma.BookmarkUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryUncheckedUpdateInput = {
@@ -398,6 +404,7 @@ export type DiaryUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   likes?: Prisma.LikeUncheckedUpdateManyWithoutDiaryNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutDiaryNestedInput
+  bookmarks?: Prisma.BookmarkUncheckedUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryCreateManyInput = {
@@ -592,6 +599,20 @@ export type DiaryUpdateOneRequiredWithoutLikesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.DiaryUpdateToOneWithWhereWithoutLikesInput, Prisma.DiaryUpdateWithoutLikesInput>, Prisma.DiaryUncheckedUpdateWithoutLikesInput>
 }
 
+export type DiaryCreateNestedOneWithoutBookmarksInput = {
+  create?: Prisma.XOR<Prisma.DiaryCreateWithoutBookmarksInput, Prisma.DiaryUncheckedCreateWithoutBookmarksInput>
+  connectOrCreate?: Prisma.DiaryCreateOrConnectWithoutBookmarksInput
+  connect?: Prisma.DiaryWhereUniqueInput
+}
+
+export type DiaryUpdateOneRequiredWithoutBookmarksNestedInput = {
+  create?: Prisma.XOR<Prisma.DiaryCreateWithoutBookmarksInput, Prisma.DiaryUncheckedCreateWithoutBookmarksInput>
+  connectOrCreate?: Prisma.DiaryCreateOrConnectWithoutBookmarksInput
+  upsert?: Prisma.DiaryUpsertWithoutBookmarksInput
+  connect?: Prisma.DiaryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.DiaryUpdateToOneWithWhereWithoutBookmarksInput, Prisma.DiaryUpdateWithoutBookmarksInput>, Prisma.DiaryUncheckedUpdateWithoutBookmarksInput>
+}
+
 export type DiaryCreateNestedOneWithoutCommentsInput = {
   create?: Prisma.XOR<Prisma.DiaryCreateWithoutCommentsInput, Prisma.DiaryUncheckedCreateWithoutCommentsInput>
   connectOrCreate?: Prisma.DiaryCreateOrConnectWithoutCommentsInput
@@ -618,6 +639,7 @@ export type DiaryCreateWithoutAuthorInput = {
   updatedAt?: Date | string
   likes?: Prisma.LikeCreateNestedManyWithoutDiaryInput
   comments?: Prisma.CommentCreateNestedManyWithoutDiaryInput
+  bookmarks?: Prisma.BookmarkCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryUncheckedCreateWithoutAuthorInput = {
@@ -633,6 +655,7 @@ export type DiaryUncheckedCreateWithoutAuthorInput = {
   updatedAt?: Date | string
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutDiaryInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutDiaryInput
+  bookmarks?: Prisma.BookmarkUncheckedCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryCreateOrConnectWithoutAuthorInput = {
@@ -690,6 +713,7 @@ export type DiaryCreateWithoutLikesInput = {
   updatedAt?: Date | string
   author: Prisma.UserCreateNestedOneWithoutDiariesInput
   comments?: Prisma.CommentCreateNestedManyWithoutDiaryInput
+  bookmarks?: Prisma.BookmarkCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryUncheckedCreateWithoutLikesInput = {
@@ -705,6 +729,7 @@ export type DiaryUncheckedCreateWithoutLikesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutDiaryInput
+  bookmarks?: Prisma.BookmarkUncheckedCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryCreateOrConnectWithoutLikesInput = {
@@ -735,6 +760,7 @@ export type DiaryUpdateWithoutLikesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   author?: Prisma.UserUpdateOneRequiredWithoutDiariesNestedInput
   comments?: Prisma.CommentUpdateManyWithoutDiaryNestedInput
+  bookmarks?: Prisma.BookmarkUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryUncheckedUpdateWithoutLikesInput = {
@@ -750,6 +776,85 @@ export type DiaryUncheckedUpdateWithoutLikesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUncheckedUpdateManyWithoutDiaryNestedInput
+  bookmarks?: Prisma.BookmarkUncheckedUpdateManyWithoutDiaryNestedInput
+}
+
+export type DiaryCreateWithoutBookmarksInput = {
+  title: string
+  content: string
+  mood?: string | null
+  image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
+  status?: $Enums.DiaryStatus
+  moderationStatus?: $Enums.DiaryModeration
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  author: Prisma.UserCreateNestedOneWithoutDiariesInput
+  likes?: Prisma.LikeCreateNestedManyWithoutDiaryInput
+  comments?: Prisma.CommentCreateNestedManyWithoutDiaryInput
+}
+
+export type DiaryUncheckedCreateWithoutBookmarksInput = {
+  id?: number
+  title: string
+  content: string
+  mood?: string | null
+  image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
+  status?: $Enums.DiaryStatus
+  moderationStatus?: $Enums.DiaryModeration
+  authorId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutDiaryInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutDiaryInput
+}
+
+export type DiaryCreateOrConnectWithoutBookmarksInput = {
+  where: Prisma.DiaryWhereUniqueInput
+  create: Prisma.XOR<Prisma.DiaryCreateWithoutBookmarksInput, Prisma.DiaryUncheckedCreateWithoutBookmarksInput>
+}
+
+export type DiaryUpsertWithoutBookmarksInput = {
+  update: Prisma.XOR<Prisma.DiaryUpdateWithoutBookmarksInput, Prisma.DiaryUncheckedUpdateWithoutBookmarksInput>
+  create: Prisma.XOR<Prisma.DiaryCreateWithoutBookmarksInput, Prisma.DiaryUncheckedCreateWithoutBookmarksInput>
+  where?: Prisma.DiaryWhereInput
+}
+
+export type DiaryUpdateToOneWithWhereWithoutBookmarksInput = {
+  where?: Prisma.DiaryWhereInput
+  data: Prisma.XOR<Prisma.DiaryUpdateWithoutBookmarksInput, Prisma.DiaryUncheckedUpdateWithoutBookmarksInput>
+}
+
+export type DiaryUpdateWithoutBookmarksInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
+  status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
+  moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  author?: Prisma.UserUpdateOneRequiredWithoutDiariesNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutDiaryNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutDiaryNestedInput
+}
+
+export type DiaryUncheckedUpdateWithoutBookmarksInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
+  status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
+  moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
+  authorId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutDiaryNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryCreateWithoutCommentsInput = {
@@ -764,6 +869,7 @@ export type DiaryCreateWithoutCommentsInput = {
   updatedAt?: Date | string
   author: Prisma.UserCreateNestedOneWithoutDiariesInput
   likes?: Prisma.LikeCreateNestedManyWithoutDiaryInput
+  bookmarks?: Prisma.BookmarkCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryUncheckedCreateWithoutCommentsInput = {
@@ -779,6 +885,7 @@ export type DiaryUncheckedCreateWithoutCommentsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutDiaryInput
+  bookmarks?: Prisma.BookmarkUncheckedCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryCreateOrConnectWithoutCommentsInput = {
@@ -809,6 +916,7 @@ export type DiaryUpdateWithoutCommentsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   author?: Prisma.UserUpdateOneRequiredWithoutDiariesNestedInput
   likes?: Prisma.LikeUpdateManyWithoutDiaryNestedInput
+  bookmarks?: Prisma.BookmarkUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryUncheckedUpdateWithoutCommentsInput = {
@@ -824,6 +932,7 @@ export type DiaryUncheckedUpdateWithoutCommentsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   likes?: Prisma.LikeUncheckedUpdateManyWithoutDiaryNestedInput
+  bookmarks?: Prisma.BookmarkUncheckedUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryCreateManyAuthorInput = {
@@ -851,6 +960,7 @@ export type DiaryUpdateWithoutAuthorInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   likes?: Prisma.LikeUpdateManyWithoutDiaryNestedInput
   comments?: Prisma.CommentUpdateManyWithoutDiaryNestedInput
+  bookmarks?: Prisma.BookmarkUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryUncheckedUpdateWithoutAuthorInput = {
@@ -866,6 +976,7 @@ export type DiaryUncheckedUpdateWithoutAuthorInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   likes?: Prisma.LikeUncheckedUpdateManyWithoutDiaryNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutDiaryNestedInput
+  bookmarks?: Prisma.BookmarkUncheckedUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryUncheckedUpdateManyWithoutAuthorInput = {
@@ -889,11 +1000,13 @@ export type DiaryUncheckedUpdateManyWithoutAuthorInput = {
 export type DiaryCountOutputType = {
   likes: number
   comments: number
+  bookmarks: number
 }
 
 export type DiaryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   likes?: boolean | DiaryCountOutputTypeCountLikesArgs
   comments?: boolean | DiaryCountOutputTypeCountCommentsArgs
+  bookmarks?: boolean | DiaryCountOutputTypeCountBookmarksArgs
 }
 
 /**
@@ -920,6 +1033,13 @@ export type DiaryCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.
   where?: Prisma.CommentWhereInput
 }
 
+/**
+ * DiaryCountOutputType without action
+ */
+export type DiaryCountOutputTypeCountBookmarksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BookmarkWhereInput
+}
+
 
 export type DiarySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -936,6 +1056,7 @@ export type DiarySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   likes?: boolean | Prisma.Diary$likesArgs<ExtArgs>
   comments?: boolean | Prisma.Diary$commentsArgs<ExtArgs>
+  bookmarks?: boolean | Prisma.Diary$bookmarksArgs<ExtArgs>
   _count?: boolean | Prisma.DiaryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["diary"]>
 
@@ -988,6 +1109,7 @@ export type DiaryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   likes?: boolean | Prisma.Diary$likesArgs<ExtArgs>
   comments?: boolean | Prisma.Diary$commentsArgs<ExtArgs>
+  bookmarks?: boolean | Prisma.Diary$bookmarksArgs<ExtArgs>
   _count?: boolean | Prisma.DiaryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type DiaryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1003,6 +1125,7 @@ export type $DiaryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     author: Prisma.$UserPayload<ExtArgs>
     likes: Prisma.$LikePayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
+    bookmarks: Prisma.$BookmarkPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1413,6 +1536,7 @@ export interface Prisma__DiaryClient<T, Null = never, ExtArgs extends runtime.Ty
   author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   likes<T extends Prisma.Diary$likesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Diary$likesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.Diary$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Diary$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  bookmarks<T extends Prisma.Diary$bookmarksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Diary$bookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1899,6 +2023,30 @@ export type Diary$commentsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.CommentScalarFieldEnum | Prisma.CommentScalarFieldEnum[]
+}
+
+/**
+ * Diary.bookmarks
+ */
+export type Diary$bookmarksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Bookmark
+   */
+  select?: Prisma.BookmarkSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Bookmark
+   */
+  omit?: Prisma.BookmarkOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BookmarkInclude<ExtArgs> | null
+  where?: Prisma.BookmarkWhereInput
+  orderBy?: Prisma.BookmarkOrderByWithRelationInput | Prisma.BookmarkOrderByWithRelationInput[]
+  cursor?: Prisma.BookmarkWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BookmarkScalarFieldEnum | Prisma.BookmarkScalarFieldEnum[]
 }
 
 /**
