@@ -34,7 +34,9 @@ export default async function BookmarksPage() {
                 {bookmark.diary.title}
               </Link>
               {" — oleh "}
-              {bookmark.diary.author.name}
+              <Link href={`/user/${bookmark.diary.authorId}`}>
+                {bookmark.diary.author.name}
+              </Link>
             </li>
           ))}
         </ul>

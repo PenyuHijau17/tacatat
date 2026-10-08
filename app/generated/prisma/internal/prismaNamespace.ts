@@ -402,6 +402,7 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Diary: 'Diary',
+  Follow: 'Follow',
   Report: 'Report',
   Like: 'Like',
   Bookmark: 'Bookmark',
@@ -421,7 +422,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "diary" | "report" | "like" | "bookmark" | "comment"
+    modelProps: "user" | "session" | "account" | "verification" | "diary" | "follow" | "report" | "like" | "bookmark" | "comment"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -792,6 +793,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.DiaryCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.DiaryCountAggregateOutputType> | number
+        }
+      }
+    }
+    Follow: {
+      payload: Prisma.$FollowPayload<ExtArgs>
+      fields: Prisma.FollowFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FollowFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FollowFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>
+        }
+        findFirst: {
+          args: Prisma.FollowFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FollowFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>
+        }
+        findMany: {
+          args: Prisma.FollowFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>[]
+        }
+        create: {
+          args: Prisma.FollowCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>
+        }
+        createMany: {
+          args: Prisma.FollowCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.FollowCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>[]
+        }
+        delete: {
+          args: Prisma.FollowDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>
+        }
+        update: {
+          args: Prisma.FollowUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>
+        }
+        deleteMany: {
+          args: Prisma.FollowDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FollowUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.FollowUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>[]
+        }
+        upsert: {
+          args: Prisma.FollowUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>
+        }
+        aggregate: {
+          args: Prisma.FollowAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFollow>
+        }
+        groupBy: {
+          args: Prisma.FollowGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FollowGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FollowCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FollowCountAggregateOutputType> | number
         }
       }
     }
@@ -1206,6 +1281,16 @@ export const DiaryScalarFieldEnum = {
 export type DiaryScalarFieldEnum = (typeof DiaryScalarFieldEnum)[keyof typeof DiaryScalarFieldEnum]
 
 
+export const FollowScalarFieldEnum = {
+  id: 'id',
+  followerId: 'followerId',
+  followingId: 'followingId',
+  createdAt: 'createdAt'
+} as const
+
+export type FollowScalarFieldEnum = (typeof FollowScalarFieldEnum)[keyof typeof FollowScalarFieldEnum]
+
+
 export const ReportScalarFieldEnum = {
   id: 'id',
   reason: 'reason',
@@ -1538,6 +1623,7 @@ export type GlobalOmitConfig = {
   account?: Prisma.AccountOmit
   verification?: Prisma.VerificationOmit
   diary?: Prisma.DiaryOmit
+  follow?: Prisma.FollowOmit
   report?: Prisma.ReportOmit
   like?: Prisma.LikeOmit
   bookmark?: Prisma.BookmarkOmit

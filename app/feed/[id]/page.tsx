@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { prisma } from "@/app/lib/prisma";
 import { getSession } from "@/app/lib/session";
 import { toggleLike, addComment, toggleBookmark, reportDiary } from "../actions";
@@ -47,7 +48,7 @@ export default async function PublicDiaryPage({
     <main className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-6">
       <h1 className="text-2xl font-bold">{diary.title}</h1>
 
-      <p>Oleh: {diary.author.name}</p>
+      <p>Oleh: <Link href={`/user/${diary.authorId}`}>{diary.author.name}</Link></p>
       {diary.mood && <p>Mood: {diary.mood}</p>}
       {diary.tags.length > 0 && <p>Tags: #{diary.tags.join(" #")}</p>}
       <p>{new Date(diary.createdAt).toLocaleDateString("id-ID")}</p>

@@ -29,6 +29,8 @@ model User {
   comments      Comment[]
   bookmarks     Bookmark[]
   reports       Report[]
+  following     Follow[] @relation("following")
+  followers     Follow[] @relation("followers")
 }
 
 model Session {
@@ -106,6 +108,18 @@ model Diary {
   comments Comment[]
   bookmarks Bookmark[]
   reports  Report[]
+}
+
+model Follow {
+  id          Int      @id @default(autoincrement())
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+
+  follower  User @relation("following", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation("followers", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
 }
 
 model Report {

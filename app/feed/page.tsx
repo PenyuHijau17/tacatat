@@ -27,7 +27,7 @@ export default async function FeedPage() {
             <li key={diary.id}>
               <Link href={`/feed/${diary.id}`}>{diary.title}</Link>
               {" — oleh "}
-              {diary.author.name}
+              <Link href={`/user/${diary.authorId}`}>{diary.author.name}</Link>
               {diary.mood ? ` — mood: ${diary.mood}` : ""}
               {diary.tags.length > 0 ? ` — #${diary.tags.join(" #")}` : ""}
               {" — "}

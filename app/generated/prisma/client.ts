@@ -67,6 +67,11 @@ export type Verification = Prisma.VerificationModel
  */
 export type Diary = Prisma.DiaryModel
 /**
+ * Model Follow
+ * 
+ */
+export type Follow = Prisma.FollowModel
+/**
  * Model Report
  * 
  */
