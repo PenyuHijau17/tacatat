@@ -166,7 +166,7 @@ Writter
 Private Space miliknya
    ↓
 Private Diary
-
+```
 
 User lain tidak boleh masuk.
 
@@ -175,92 +175,93 @@ Admin juga tidak boleh masuk.
 UI, route, API, database query, dan server authorization harus mengikuti aturan tersebut.
 
 
-11. Moderation
+## 11. Moderation
 
 Admin dapat melakukan moderasi terhadap public diary.
 
 Moderasi memiliki dua tindakan utama:
 
-Block
+**Block**
 
-block berarti public diary dianggap tidak layak berada di area publik.
+Block berarti public diary dianggap tidak layak berada di area publik.
 
 Diary yang di-block:
 
-dikeluarkan dari area publik;
-tidak dapat tampil sebagai public content;
-dikembalikan kepada writter untuk ditangani sesuai mekanisme yang dibuat.
-Revisi
+- dikeluarkan dari area publik;
+- tidak dapat tampil sebagai public content;
+- dikembalikan kepada writter untuk ditangani sesuai mekanisme yang dibuat.
 
-revisi berarti diary dikembalikan kepada writter karena membutuhkan perbaikan.
+**Revisi**
+
+Revisi berarti diary dikembalikan kepada writter karena membutuhkan perbaikan.
 
 Writter kemudian dapat memperbaiki diary sebelum diajukan kembali untuk public.
 
-Batas Moderasi
+**Batas Moderasi**
 
 Moderasi admin berlaku terhadap public content.
 
 Moderasi tidak boleh digunakan sebagai alasan untuk membuka private diary writter.
 
-12. Fitur Sosial
+## 12. Fitur Sosial
 
 Fitur sosial merupakan fitur pendukung diary.
 
 Fitur sosial yang dapat dikembangkan meliputi:
 
-like;
-comment;
-reply;
-bookmark;
-share;
-report;
-follow;
-profile;
-notification.
+- like;
+- comment;
+- reply;
+- bookmark;
+- share;
+- report;
+- follow;
+- profile;
+- notification.
 
 Fitur sosial tidak boleh menggeser fokus TACATAT dari diary.
 
-13. Mood
+## 13. Mood
 
 Diary dapat memiliki mood.
 
 Mood merupakan bagian dari pengalaman diary dan dapat digunakan untuk:
 
-memberi konteks terhadap diary;
-membantu pengguna memahami suasana tulisan;
-mendukung eksplorasi diary;
-mendukung fitur statistik atau tampilan mood apabila fitur tersebut dikembangkan.
-14. Public Feed dan Reader
+- memberi konteks terhadap diary;
+- membantu pengguna memahami suasana tulisan;
+- mendukung eksplorasi diary;
+- mendukung fitur statistik atau tampilan mood apabila fitur tersebut dikembangkan.
+## 14. Public Feed dan Reader
 
 TACATAT memiliki area untuk menemukan dan membaca public diary.
 
 Public feed harus:
 
-hanya menampilkan diary yang memang boleh berada di area publik;
-tidak menampilkan private diary;
-tidak membocorkan isi private diary melalui pencarian, API, metadata, atau response lainnya.
+- hanya menampilkan diary yang memang boleh berada di area publik;
+- tidak menampilkan private diary;
+- tidak membocorkan isi private diary melalui pencarian, API, metadata, atau response lainnya.
 
 Reader harus tetap menonjolkan isi diary, bukan hanya elemen sosialnya.
 
-15. Search dan Explore
+## 15. Search dan Explore
 
 TACATAT dapat memiliki fitur:
 
-search;
-explore;
-filtering berdasarkan mood atau informasi diary lainnya.
+- search;
+- explore;
+- filtering berdasarkan mood atau informasi diary lainnya.
 
 Search dan explore hanya boleh bekerja terhadap data yang memang boleh ditemukan oleh pengguna.
 
 Private diary tidak boleh muncul melalui:
 
-search;
-explore;
-public feed;
-rekomendasi;
-metadata publik;
-endpoint/API publik.
-16. Profile
+- search;
+- explore;
+- public feed;
+- rekomendasi;
+- metadata publik;
+- endpoint/API publik.
+## 16. Profile
 
 Pengguna memiliki profile.
 
@@ -268,13 +269,13 @@ Profile dapat digunakan untuk menampilkan informasi publik yang memang diperbole
 
 Profile tidak boleh digunakan untuk membocorkan private diary milik writter.
 
-17. Authentication
+## 17. Authentication
 
 TACATAT membutuhkan authentication untuk membedakan:
 
-user yang belum login;
-writter;
-admin.
+- user yang belum login;
+- writter;
+- admin.
 
 Protected pages dan protected actions harus memeriksa authentication.
 
@@ -282,16 +283,16 @@ Role harus diperiksa melalui authorization.
 
 Authentication dan authorization adalah dua hal yang berbeda dan keduanya harus diterapkan dengan benar.
 
-18. Authorization
+## 18. Authorization
 
 Semua aturan akses penting harus diperiksa di server.
 
 Jangan mengandalkan:
 
-menyembunyikan tombol;
-menyembunyikan menu;
-redirect dari client;
-pengecekan UI saja.
+- menyembunyikan tombol;
+- menyembunyikan menu;
+- redirect dari client;
+- pengecekan UI saja.
 
 Contoh:
 
@@ -299,36 +300,41 @@ Jika admin tidak boleh membuka private diary, maka server harus benar-benar meno
 
 Bukan hanya:
 
+```text
 Private Diary
-     ↓
+    ↓
 tombol disembunyikan dari admin
+```
 
 tetapi:
 
+```text
 Request admin
-     ↓
+    ↓
 Server memeriksa permission
-     ↓
+    ↓
 Akses ditolak
-19. Tech Stack
+```
+## 19. Tech Stack
 
 TACATAT dibangun menggunakan:
 
-Next.js;
-TypeScript;
-Docker;
-PostgreSQL;
-Prisma;
-Tailwind CSS.
+- Next.js;
+- TypeScript;
+- Docker;
+- PostgreSQL;
+- Prisma;
+- Tailwind CSS.
 
 Project dijalankan menggunakan environment Docker.
 
 Development environment harus menjaga konsistensi versi dan dependency project.
 
-20. Struktur Pengembangan
+## 20. Struktur Pengembangan
 
 Pengembangan fitur mengikuti alur:
 
+```text
 Requirement
     ↓
 Design / Planning
@@ -346,83 +352,85 @@ Testing
 Review
     ↓
 Git Commit
+```
 
 Jangan langsung membuat banyak fitur tanpa memastikan fitur sebelumnya benar.
 
-21. Definition of Done
+## 21. Definition of Done
 
 Sebuah fitur tidak dianggap selesai hanya karena tampil di browser.
 
 Fitur dianggap selesai apabila:
 
-requirement sudah sesuai;
-implementasi berjalan;
-authorization benar;
-data yang dihasilkan benar;
-UI bekerja;
-error handling diperhatikan;
-test/verifikasi dilakukan;
-tidak melanggar aturan private/public;
-tidak merusak fitur sebelumnya;
-kode sudah direview;
-perubahan sudah di-commit ke Git.
-22. Aturan Penggunaan AI
+- requirement sudah sesuai;
+- implementasi berjalan;
+- authorization benar;
+- data yang dihasilkan benar;
+- UI bekerja;
+- error handling diperhatikan;
+- test/verifikasi dilakukan;
+- tidak melanggar aturan private/public;
+- tidak merusak fitur sebelumnya;
+- kode sudah direview;
+- perubahan sudah di-commit ke Git.
+## 22. Aturan Penggunaan AI
 
 AI boleh digunakan untuk:
 
-membantu merancang fitur;
-menjelaskan konsep;
-membuat kode;
-memperbaiki error;
-membuat test;
-melakukan refactoring;
-membantu dokumentasi.
+- membantu merancang fitur;
+- menjelaskan konsep;
+- membuat kode;
+- memperbaiki error;
+- membuat test;
+- melakukan refactoring;
+- membantu dokumentasi.
 
 Namun hasil AI harus selalu diperiksa.
 
 Jangan menganggap kode benar hanya karena:
 
-berhasil di-generate;
-tidak menunjukkan error;
-berhasil dijalankan sekali;
-terlihat bagus.
+- berhasil di-generate;
+- tidak menunjukkan error;
+- berhasil dijalankan sekali;
+- terlihat bagus.
 
 Setiap hasil AI harus dibandingkan dengan aturan TACATAT.
 
-Jika hasil AI bertentangan dengan PROJECT_RULES.md, maka aturan project harus diutamakan.
+Jika hasil AI bertentangan dengan `tacatat.md`, maka aturan project harus diutamakan.
 
-23. Prinsip Pengembangan
+## 23. Prinsip Pengembangan
 
 TACATAT dikembangkan dengan prinsip:
 
-Diary First
+**Diary First**
 
 Diary adalah pusat TACATAT.
 
-Privacy First
+**Privacy First**
 
 Private diary benar-benar privat, termasuk dari admin.
 
-Authorization First
+**Authorization First**
 
 Permission harus ditegakkan di server.
 
-Verification First
+**Verification First**
 
 Fitur harus diverifikasi sebelum dianggap selesai.
 
-Simple Before Complex
+**Simple Before Complex**
 
 Jangan menambahkan kompleksitas yang belum dibutuhkan.
 
-Context Before Code
+**Context Before Code**
 
 Pahami requirement dan aturan project sebelum menulis implementasi.
 
-24. Aturan yang Tidak Boleh Dilupakan
+## 24. Aturan yang Tidak Boleh Dilupakan
+
 1. Role hanya:
-   admin
-   writter
+   - admin
+   - writter
 
 2. Diary adalah inti utama website.
 
@@ -448,32 +456,30 @@ Pahami requirement dan aturan project sebelum menulis implementasi.
 12. Setiap fitur harus diverifikasi sebelum dianggap selesai.
 
 13. Perubahan yang sudah selesai harus di-commit ke Git.
-25. Tujuan Akhir TACATAT
+
+## 25. Tujuan Akhir TACATAT
 
 TACATAT bukan sekadar aplikasi yang memiliki fitur diary.
 
 TACATAT harus menjadi sebuah Social Diary di mana:
 
-                 DIARY
-                   │
-          ┌────────┴────────┐
-          │                 │
-       PRIVATE            PUBLIC
-          │                 │
-          │           ┌─────┴─────┐
-          │           │           │
-        Owner        Reader      Social
-                                  │
-                            Like / Comment
-                            Follow / Share
-          │
-    Private Space
+```text
+                DIARY
+                  │
+         ┌────────┴────────┐
+         │                 │
+      PRIVATE            PUBLIC
+         │                 │
+         │           ┌─────┴─────┐
+         │           │           │
+       Owner        Reader      Social
+                                 │
+                           Like / Comment
+                           Follow / Share
+         │
+   Private Space
+```
 
 Semua fitur yang ditambahkan harus mendukung konsep tersebut.
 
 Diary tetap menjadi pusat TACATAT.
-
-
-Menurutku versi ini lebih cocok dijadikan file sebenarnya karena **nggak terlalu banyak hiasan**, tapi tetap punya struktur yang jelas untuk dibaca manusia maupun dijadikan context oleh AI.
-
-Satu catatan: aku sengaja **tidak memasukkan detail implementasi yang belum benar-benar kita putuskan**. Jadi file ini berfungsi sebagai arah/ketentuan produk, bukan sebagai dokumentasi kode.
