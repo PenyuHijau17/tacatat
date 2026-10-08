@@ -18,6 +18,7 @@ function parseFields(formData: FormData) {
   const title = String(formData.get("title") ?? "").trim();
   const content = String(formData.get("content") ?? "").trim();
   const moodRaw = String(formData.get("mood") ?? "").trim();
+  const tagsRaw = String(formData.get("tags") ?? "").trim();
 
   if (!title) {
     throw new Error("Judul diary wajib diisi");
@@ -30,6 +31,7 @@ function parseFields(formData: FormData) {
     title,
     content,
     mood: moodRaw === "" ? null : moodRaw,
+    tags: tagsRaw === "" ? [] : tagsRaw.split(",").map((tag) => tag.trim()).filter((tag) => tag !== ""),
     status: parseStatus(formData.get("status")),
   };
 }

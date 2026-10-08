@@ -33,6 +33,7 @@ export default async function DiariesPage() {
               {" — "}
               <span>{diary.status}</span>
               {diary.mood ? ` — mood: ${diary.mood}` : ""}
+              {diary.tags.length > 0 ? ` — #${diary.tags.join(" #")}` : ""}
               {diary.moderationStatus !== "none"
                 ? ` — moderasi: ${diary.moderationStatus}`
                 : ""}

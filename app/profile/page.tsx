@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSession } from "@/app/lib/session";
-import LogoutButton from "./logout-button";
 
-export default async function DashboardPage() {
+export default async function ProfilePage() {
   const session = await getSession();
 
   if (!session) {
@@ -12,20 +11,16 @@ export default async function DashboardPage() {
 
   return (
     <main>
-      <h1>Dashboard</h1>
+      <h1>Profile</h1>
 
-      <p>Selamat datang, {session.user.name}</p>
+      <p>Nama: {session.user.name}</p>
       <p>Email: {session.user.email}</p>
       <p>Role: {session.user.role}</p>
+      <p>Bergabung: {new Date(session.user.createdAt).toLocaleDateString("id-ID")}</p>
 
       <p>
-        <Link href="/diaries">Private Space</Link>
+        <Link href="/diaries">Diary Saya</Link>
       </p>
-      <p>
-        <Link href="/profile">Profile</Link>
-      </p>
-
-      <LogoutButton />
     </main>
   );
 }

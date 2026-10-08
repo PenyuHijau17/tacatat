@@ -26,6 +26,7 @@ export default async function FeedPage() {
               {" — oleh "}
               {diary.author.name}
               {diary.mood ? ` — mood: ${diary.mood}` : ""}
+              {diary.tags.length > 0 ? ` — #${diary.tags.join(" #")}` : ""}
               {" — "}
               {new Date(diary.createdAt).toLocaleDateString("id-ID")}
             </li>

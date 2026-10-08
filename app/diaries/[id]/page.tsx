@@ -36,6 +36,7 @@ export default async function DiaryDetailPage({
 
       <p>Status: {diary.status}</p>
       {diary.mood && <p>Mood: {diary.mood}</p>}
+      {diary.tags.length > 0 && <p>Tags: #{diary.tags.join(" #")}</p>}
       <p>{new Date(diary.createdAt).toLocaleDateString("id-ID")}</p>
 
       <p>{diary.content}</p>

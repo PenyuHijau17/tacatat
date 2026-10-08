@@ -89,6 +89,7 @@ model Diary {
   content          String
   mood             String?
   image            String?
+  tags             String[]        @default([])
   status           DiaryStatus     @default(draft)
   moderationStatus DiaryModeration @default(none)
   authorId         String

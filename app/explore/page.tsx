@@ -69,6 +69,7 @@ export default async function ExplorePage({
               {" — oleh "}
               {diary.author.name}
               {diary.mood ? ` — mood: ${diary.mood}` : ""}
+              {diary.tags.length > 0 ? ` — #${diary.tags.join(" #")}` : ""}
             </li>
           ))}
         </ul>

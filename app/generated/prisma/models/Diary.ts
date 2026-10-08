@@ -66,6 +66,7 @@ export type DiaryCountAggregateOutputType = {
   content: number
   mood: number
   image: number
+  tags: number
   status: number
   moderationStatus: number
   authorId: number
@@ -115,6 +116,7 @@ export type DiaryCountAggregateInputType = {
   content?: true
   mood?: true
   image?: true
+  tags?: true
   status?: true
   moderationStatus?: true
   authorId?: true
@@ -215,6 +217,7 @@ export type DiaryGroupByOutputType = {
   content: string
   mood: string | null
   image: string | null
+  tags: string[]
   status: $Enums.DiaryStatus
   moderationStatus: $Enums.DiaryModeration
   authorId: string
@@ -251,6 +254,7 @@ export type DiaryWhereInput = {
   content?: Prisma.StringFilter<"Diary"> | string
   mood?: Prisma.StringNullableFilter<"Diary"> | string | null
   image?: Prisma.StringNullableFilter<"Diary"> | string | null
+  tags?: Prisma.StringNullableListFilter<"Diary">
   status?: Prisma.EnumDiaryStatusFilter<"Diary"> | $Enums.DiaryStatus
   moderationStatus?: Prisma.EnumDiaryModerationFilter<"Diary"> | $Enums.DiaryModeration
   authorId?: Prisma.StringFilter<"Diary"> | string
@@ -265,6 +269,7 @@ export type DiaryOrderByWithRelationInput = {
   content?: Prisma.SortOrder
   mood?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
+  tags?: Prisma.SortOrder
   status?: Prisma.SortOrder
   moderationStatus?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
@@ -282,6 +287,7 @@ export type DiaryWhereUniqueInput = Prisma.AtLeast<{
   content?: Prisma.StringFilter<"Diary"> | string
   mood?: Prisma.StringNullableFilter<"Diary"> | string | null
   image?: Prisma.StringNullableFilter<"Diary"> | string | null
+  tags?: Prisma.StringNullableListFilter<"Diary">
   status?: Prisma.EnumDiaryStatusFilter<"Diary"> | $Enums.DiaryStatus
   moderationStatus?: Prisma.EnumDiaryModerationFilter<"Diary"> | $Enums.DiaryModeration
   authorId?: Prisma.StringFilter<"Diary"> | string
@@ -296,6 +302,7 @@ export type DiaryOrderByWithAggregationInput = {
   content?: Prisma.SortOrder
   mood?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
+  tags?: Prisma.SortOrder
   status?: Prisma.SortOrder
   moderationStatus?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
@@ -317,6 +324,7 @@ export type DiaryScalarWhereWithAggregatesInput = {
   content?: Prisma.StringWithAggregatesFilter<"Diary"> | string
   mood?: Prisma.StringNullableWithAggregatesFilter<"Diary"> | string | null
   image?: Prisma.StringNullableWithAggregatesFilter<"Diary"> | string | null
+  tags?: Prisma.StringNullableListFilter<"Diary">
   status?: Prisma.EnumDiaryStatusWithAggregatesFilter<"Diary"> | $Enums.DiaryStatus
   moderationStatus?: Prisma.EnumDiaryModerationWithAggregatesFilter<"Diary"> | $Enums.DiaryModeration
   authorId?: Prisma.StringWithAggregatesFilter<"Diary"> | string
@@ -329,6 +337,7 @@ export type DiaryCreateInput = {
   content: string
   mood?: string | null
   image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
   status?: $Enums.DiaryStatus
   moderationStatus?: $Enums.DiaryModeration
   createdAt?: Date | string
@@ -342,6 +351,7 @@ export type DiaryUncheckedCreateInput = {
   content: string
   mood?: string | null
   image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
   status?: $Enums.DiaryStatus
   moderationStatus?: $Enums.DiaryModeration
   authorId: string
@@ -354,6 +364,7 @@ export type DiaryUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
   status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
   moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -367,6 +378,7 @@ export type DiaryUncheckedUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
   status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
   moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -380,6 +392,7 @@ export type DiaryCreateManyInput = {
   content: string
   mood?: string | null
   image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
   status?: $Enums.DiaryStatus
   moderationStatus?: $Enums.DiaryModeration
   authorId: string
@@ -392,6 +405,7 @@ export type DiaryUpdateManyMutationInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
   status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
   moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -404,6 +418,7 @@ export type DiaryUncheckedUpdateManyInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
   status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
   moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -421,12 +436,21 @@ export type DiaryOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
 export type DiaryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   content?: Prisma.SortOrder
   mood?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  tags?: Prisma.SortOrder
   status?: Prisma.SortOrder
   moderationStatus?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
@@ -510,6 +534,15 @@ export type DiaryUncheckedUpdateManyWithoutAuthorNestedInput = {
   deleteMany?: Prisma.DiaryScalarWhereInput | Prisma.DiaryScalarWhereInput[]
 }
 
+export type DiaryCreatetagsInput = {
+  set: string[]
+}
+
+export type DiaryUpdatetagsInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 export type EnumDiaryStatusFieldUpdateOperationsInput = {
   set?: $Enums.DiaryStatus
 }
@@ -531,6 +564,7 @@ export type DiaryCreateWithoutAuthorInput = {
   content: string
   mood?: string | null
   image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
   status?: $Enums.DiaryStatus
   moderationStatus?: $Enums.DiaryModeration
   createdAt?: Date | string
@@ -543,6 +577,7 @@ export type DiaryUncheckedCreateWithoutAuthorInput = {
   content: string
   mood?: string | null
   image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
   status?: $Enums.DiaryStatus
   moderationStatus?: $Enums.DiaryModeration
   createdAt?: Date | string
@@ -584,6 +619,7 @@ export type DiaryScalarWhereInput = {
   content?: Prisma.StringFilter<"Diary"> | string
   mood?: Prisma.StringNullableFilter<"Diary"> | string | null
   image?: Prisma.StringNullableFilter<"Diary"> | string | null
+  tags?: Prisma.StringNullableListFilter<"Diary">
   status?: Prisma.EnumDiaryStatusFilter<"Diary"> | $Enums.DiaryStatus
   moderationStatus?: Prisma.EnumDiaryModerationFilter<"Diary"> | $Enums.DiaryModeration
   authorId?: Prisma.StringFilter<"Diary"> | string
@@ -597,6 +633,7 @@ export type DiaryCreateManyAuthorInput = {
   content: string
   mood?: string | null
   image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
   status?: $Enums.DiaryStatus
   moderationStatus?: $Enums.DiaryModeration
   createdAt?: Date | string
@@ -608,6 +645,7 @@ export type DiaryUpdateWithoutAuthorInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
   status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
   moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -620,6 +658,7 @@ export type DiaryUncheckedUpdateWithoutAuthorInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
   status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
   moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -632,6 +671,7 @@ export type DiaryUncheckedUpdateManyWithoutAuthorInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
   status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
   moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -646,6 +686,7 @@ export type DiarySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   content?: boolean
   mood?: boolean
   image?: boolean
+  tags?: boolean
   status?: boolean
   moderationStatus?: boolean
   authorId?: boolean
@@ -660,6 +701,7 @@ export type DiarySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   content?: boolean
   mood?: boolean
   image?: boolean
+  tags?: boolean
   status?: boolean
   moderationStatus?: boolean
   authorId?: boolean
@@ -674,6 +716,7 @@ export type DiarySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   content?: boolean
   mood?: boolean
   image?: boolean
+  tags?: boolean
   status?: boolean
   moderationStatus?: boolean
   authorId?: boolean
@@ -688,6 +731,7 @@ export type DiarySelectScalar = {
   content?: boolean
   mood?: boolean
   image?: boolean
+  tags?: boolean
   status?: boolean
   moderationStatus?: boolean
   authorId?: boolean
@@ -695,7 +739,7 @@ export type DiarySelectScalar = {
   updatedAt?: boolean
 }
 
-export type DiaryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "content" | "mood" | "image" | "status" | "moderationStatus" | "authorId" | "createdAt" | "updatedAt", ExtArgs["result"]["diary"]>
+export type DiaryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "content" | "mood" | "image" | "tags" | "status" | "moderationStatus" | "authorId" | "createdAt" | "updatedAt", ExtArgs["result"]["diary"]>
 export type DiaryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -717,6 +761,7 @@ export type $DiaryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     content: string
     mood: string | null
     image: string | null
+    tags: string[]
     status: $Enums.DiaryStatus
     moderationStatus: $Enums.DiaryModeration
     authorId: string
@@ -1151,6 +1196,7 @@ export interface DiaryFieldRefs {
   readonly content: Prisma.FieldRef<"Diary", 'String'>
   readonly mood: Prisma.FieldRef<"Diary", 'String'>
   readonly image: Prisma.FieldRef<"Diary", 'String'>
+  readonly tags: Prisma.FieldRef<"Diary", 'String[]'>
   readonly status: Prisma.FieldRef<"Diary", 'DiaryStatus'>
   readonly moderationStatus: Prisma.FieldRef<"Diary", 'DiaryModeration'>
   readonly authorId: Prisma.FieldRef<"Diary", 'String'>

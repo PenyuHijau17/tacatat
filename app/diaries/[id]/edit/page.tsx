@@ -66,6 +66,16 @@ export default async function EditDiaryPage({
         </div>
 
         <div>
+          <label htmlFor="tags">Tags (pisahkan dengan koma, opsional)</label>
+          <input
+            id="tags"
+            name="tags"
+            type="text"
+            defaultValue={diary.tags.join(", ")}
+          />
+        </div>
+
+        <div>
           <label htmlFor="status">Status</label>
           <select id="status" name="status" defaultValue={diary.status}>
             <option value="draft">Draft</option>
