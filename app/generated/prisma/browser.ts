@@ -43,6 +43,11 @@ export type Verification = Prisma.VerificationModel
  */
 export type Diary = Prisma.DiaryModel
 /**
+ * Model Report
+ * 
+ */
+export type Report = Prisma.ReportModel
+/**
  * Model Like
  * 
  */

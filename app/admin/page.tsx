@@ -17,7 +17,7 @@ export default async function AdminPage() {
   const publicDiaries = await prisma.diary.findMany({
     where: { status: "public" },
     orderBy: { createdAt: "desc" },
-    include: { author: { select: { name: true } } },
+    include: { author: { select: { name: true } }, reports: true },
   });
 
   return (
@@ -36,7 +36,8 @@ export default async function AdminPage() {
         <ul>
           {publicDiaries.map((diary) => (
             <li key={diary.id}>
-              {diary.title} — oleh {diary.author.name}{" "}
+              {diary.title} — oleh {diary.author.name}
+              {diary.reports.length > 0 ? ` — ${diary.reports.length} laporan` : ""}{" "}
               <form action={blockDiary.bind(null, diary.id)} style={{ display: "inline" }}>
                 <button type="submit">Block</button>
               </form>{" "}

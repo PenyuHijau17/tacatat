@@ -37,6 +37,21 @@ export async function toggleLike(id: number) {
   revalidatePath("/feed");
 }
 
+export async function reportDiary(id: number, formData: FormData) {
+  const { session } = await requirePublicDiary(id);
+
+  const reason = String(formData.get("reason") ?? "").trim();
+  if (!reason) {
+    return;
+  }
+
+  await prisma.report.create({
+    data: { diaryId: id, userId: session.user.id, reason },
+  });
+
+  revalidatePath(`/feed/${id}`);
+}
+
 export async function toggleBookmark(id: number) {
   const { session } = await requirePublicDiary(id);
 

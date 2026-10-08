@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/app/lib/prisma";
 import { getSession } from "@/app/lib/session";
-import { toggleLike, addComment, toggleBookmark } from "../actions";
+import { toggleLike, addComment, toggleBookmark, reportDiary } from "../actions";
 
 export default async function PublicDiaryPage({
   params,
@@ -37,6 +37,7 @@ export default async function PublicDiaryPage({
   const session = await getSession();
   const toggleLikeWithId = toggleLike.bind(null, diary.id);
   const toggleBookmarkWithId = toggleBookmark.bind(null, diary.id);
+  const reportDiaryWithId = reportDiary.bind(null, diary.id);
   const addCommentWithId = addComment.bind(null, diary.id);
   const isBookmarked = session
     ? diary.bookmarks.some((bookmark) => bookmark.userId === session.user.id)
@@ -72,6 +73,25 @@ export default async function PublicDiaryPage({
         </form>
       ) : (
         <p>Login untuk mem-bookmark.</p>
+      )}
+
+      {session ? (
+        <form action={reportDiaryWithId}>
+          <label htmlFor="reason">Laporkan diary ini</label>
+          <textarea
+            id="reason"
+            name="reason"
+            rows={2}
+            required
+            className="w-full rounded border border-zinc-300 px-3 py-2"
+            placeholder="Alasan laporan"
+          />
+          <button type="submit" className="rounded border border-red-300 px-4 py-2 text-red-700">
+            Kirim Laporan
+          </button>
+        </form>
+      ) : (
+        <p>Login untuk melaporkan.</p>
       )}
 
       <h2 className="text-xl font-semibold">Komentar</h2>
