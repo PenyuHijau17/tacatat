@@ -5,7 +5,10 @@ export default async function FeedPage() {
   const diaries = await prisma.diary.findMany({
     where: { status: "public" },
     orderBy: { createdAt: "desc" },
-    include: { author: { select: { name: true } } },
+    include: {
+      author: { select: { name: true } },
+      _count: { select: { likes: true, comments: true } },
+    },
   });
 
   return (
@@ -28,7 +31,7 @@ export default async function FeedPage() {
               {diary.mood ? ` — mood: ${diary.mood}` : ""}
               {diary.tags.length > 0 ? ` — #${diary.tags.join(" #")}` : ""}
               {" — "}
-              {new Date(diary.createdAt).toLocaleDateString("id-ID")}
+              {diary._count.likes} like, {diary._count.comments} komentar
             </li>
           ))}
         </ul>

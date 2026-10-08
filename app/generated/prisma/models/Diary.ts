@@ -261,6 +261,8 @@ export type DiaryWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Diary"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Diary"> | Date | string
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  likes?: Prisma.LikeListRelationFilter
+  comments?: Prisma.CommentListRelationFilter
 }
 
 export type DiaryOrderByWithRelationInput = {
@@ -276,6 +278,8 @@ export type DiaryOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   author?: Prisma.UserOrderByWithRelationInput
+  likes?: Prisma.LikeOrderByRelationAggregateInput
+  comments?: Prisma.CommentOrderByRelationAggregateInput
 }
 
 export type DiaryWhereUniqueInput = Prisma.AtLeast<{
@@ -294,6 +298,8 @@ export type DiaryWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Diary"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Diary"> | Date | string
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  likes?: Prisma.LikeListRelationFilter
+  comments?: Prisma.CommentListRelationFilter
 }, "id">
 
 export type DiaryOrderByWithAggregationInput = {
@@ -343,6 +349,8 @@ export type DiaryCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   author: Prisma.UserCreateNestedOneWithoutDiariesInput
+  likes?: Prisma.LikeCreateNestedManyWithoutDiaryInput
+  comments?: Prisma.CommentCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryUncheckedCreateInput = {
@@ -357,6 +365,8 @@ export type DiaryUncheckedCreateInput = {
   authorId: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutDiaryInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryUpdateInput = {
@@ -370,6 +380,8 @@ export type DiaryUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   author?: Prisma.UserUpdateOneRequiredWithoutDiariesNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutDiaryNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryUncheckedUpdateInput = {
@@ -384,6 +396,8 @@ export type DiaryUncheckedUpdateInput = {
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutDiaryNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryCreateManyInput = {
@@ -492,6 +506,11 @@ export type DiarySumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
+export type DiaryScalarRelationFilter = {
+  is?: Prisma.DiaryWhereInput
+  isNot?: Prisma.DiaryWhereInput
+}
+
 export type DiaryCreateNestedManyWithoutAuthorInput = {
   create?: Prisma.XOR<Prisma.DiaryCreateWithoutAuthorInput, Prisma.DiaryUncheckedCreateWithoutAuthorInput> | Prisma.DiaryCreateWithoutAuthorInput[] | Prisma.DiaryUncheckedCreateWithoutAuthorInput[]
   connectOrCreate?: Prisma.DiaryCreateOrConnectWithoutAuthorInput | Prisma.DiaryCreateOrConnectWithoutAuthorInput[]
@@ -559,6 +578,34 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type DiaryCreateNestedOneWithoutLikesInput = {
+  create?: Prisma.XOR<Prisma.DiaryCreateWithoutLikesInput, Prisma.DiaryUncheckedCreateWithoutLikesInput>
+  connectOrCreate?: Prisma.DiaryCreateOrConnectWithoutLikesInput
+  connect?: Prisma.DiaryWhereUniqueInput
+}
+
+export type DiaryUpdateOneRequiredWithoutLikesNestedInput = {
+  create?: Prisma.XOR<Prisma.DiaryCreateWithoutLikesInput, Prisma.DiaryUncheckedCreateWithoutLikesInput>
+  connectOrCreate?: Prisma.DiaryCreateOrConnectWithoutLikesInput
+  upsert?: Prisma.DiaryUpsertWithoutLikesInput
+  connect?: Prisma.DiaryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.DiaryUpdateToOneWithWhereWithoutLikesInput, Prisma.DiaryUpdateWithoutLikesInput>, Prisma.DiaryUncheckedUpdateWithoutLikesInput>
+}
+
+export type DiaryCreateNestedOneWithoutCommentsInput = {
+  create?: Prisma.XOR<Prisma.DiaryCreateWithoutCommentsInput, Prisma.DiaryUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.DiaryCreateOrConnectWithoutCommentsInput
+  connect?: Prisma.DiaryWhereUniqueInput
+}
+
+export type DiaryUpdateOneRequiredWithoutCommentsNestedInput = {
+  create?: Prisma.XOR<Prisma.DiaryCreateWithoutCommentsInput, Prisma.DiaryUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.DiaryCreateOrConnectWithoutCommentsInput
+  upsert?: Prisma.DiaryUpsertWithoutCommentsInput
+  connect?: Prisma.DiaryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.DiaryUpdateToOneWithWhereWithoutCommentsInput, Prisma.DiaryUpdateWithoutCommentsInput>, Prisma.DiaryUncheckedUpdateWithoutCommentsInput>
+}
+
 export type DiaryCreateWithoutAuthorInput = {
   title: string
   content: string
@@ -569,6 +616,8 @@ export type DiaryCreateWithoutAuthorInput = {
   moderationStatus?: $Enums.DiaryModeration
   createdAt?: Date | string
   updatedAt?: Date | string
+  likes?: Prisma.LikeCreateNestedManyWithoutDiaryInput
+  comments?: Prisma.CommentCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryUncheckedCreateWithoutAuthorInput = {
@@ -582,6 +631,8 @@ export type DiaryUncheckedCreateWithoutAuthorInput = {
   moderationStatus?: $Enums.DiaryModeration
   createdAt?: Date | string
   updatedAt?: Date | string
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutDiaryInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutDiaryInput
 }
 
 export type DiaryCreateOrConnectWithoutAuthorInput = {
@@ -627,6 +678,154 @@ export type DiaryScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Diary"> | Date | string
 }
 
+export type DiaryCreateWithoutLikesInput = {
+  title: string
+  content: string
+  mood?: string | null
+  image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
+  status?: $Enums.DiaryStatus
+  moderationStatus?: $Enums.DiaryModeration
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  author: Prisma.UserCreateNestedOneWithoutDiariesInput
+  comments?: Prisma.CommentCreateNestedManyWithoutDiaryInput
+}
+
+export type DiaryUncheckedCreateWithoutLikesInput = {
+  id?: number
+  title: string
+  content: string
+  mood?: string | null
+  image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
+  status?: $Enums.DiaryStatus
+  moderationStatus?: $Enums.DiaryModeration
+  authorId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutDiaryInput
+}
+
+export type DiaryCreateOrConnectWithoutLikesInput = {
+  where: Prisma.DiaryWhereUniqueInput
+  create: Prisma.XOR<Prisma.DiaryCreateWithoutLikesInput, Prisma.DiaryUncheckedCreateWithoutLikesInput>
+}
+
+export type DiaryUpsertWithoutLikesInput = {
+  update: Prisma.XOR<Prisma.DiaryUpdateWithoutLikesInput, Prisma.DiaryUncheckedUpdateWithoutLikesInput>
+  create: Prisma.XOR<Prisma.DiaryCreateWithoutLikesInput, Prisma.DiaryUncheckedCreateWithoutLikesInput>
+  where?: Prisma.DiaryWhereInput
+}
+
+export type DiaryUpdateToOneWithWhereWithoutLikesInput = {
+  where?: Prisma.DiaryWhereInput
+  data: Prisma.XOR<Prisma.DiaryUpdateWithoutLikesInput, Prisma.DiaryUncheckedUpdateWithoutLikesInput>
+}
+
+export type DiaryUpdateWithoutLikesInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
+  status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
+  moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  author?: Prisma.UserUpdateOneRequiredWithoutDiariesNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutDiaryNestedInput
+}
+
+export type DiaryUncheckedUpdateWithoutLikesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
+  status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
+  moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
+  authorId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutDiaryNestedInput
+}
+
+export type DiaryCreateWithoutCommentsInput = {
+  title: string
+  content: string
+  mood?: string | null
+  image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
+  status?: $Enums.DiaryStatus
+  moderationStatus?: $Enums.DiaryModeration
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  author: Prisma.UserCreateNestedOneWithoutDiariesInput
+  likes?: Prisma.LikeCreateNestedManyWithoutDiaryInput
+}
+
+export type DiaryUncheckedCreateWithoutCommentsInput = {
+  id?: number
+  title: string
+  content: string
+  mood?: string | null
+  image?: string | null
+  tags?: Prisma.DiaryCreatetagsInput | string[]
+  status?: $Enums.DiaryStatus
+  moderationStatus?: $Enums.DiaryModeration
+  authorId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutDiaryInput
+}
+
+export type DiaryCreateOrConnectWithoutCommentsInput = {
+  where: Prisma.DiaryWhereUniqueInput
+  create: Prisma.XOR<Prisma.DiaryCreateWithoutCommentsInput, Prisma.DiaryUncheckedCreateWithoutCommentsInput>
+}
+
+export type DiaryUpsertWithoutCommentsInput = {
+  update: Prisma.XOR<Prisma.DiaryUpdateWithoutCommentsInput, Prisma.DiaryUncheckedUpdateWithoutCommentsInput>
+  create: Prisma.XOR<Prisma.DiaryCreateWithoutCommentsInput, Prisma.DiaryUncheckedCreateWithoutCommentsInput>
+  where?: Prisma.DiaryWhereInput
+}
+
+export type DiaryUpdateToOneWithWhereWithoutCommentsInput = {
+  where?: Prisma.DiaryWhereInput
+  data: Prisma.XOR<Prisma.DiaryUpdateWithoutCommentsInput, Prisma.DiaryUncheckedUpdateWithoutCommentsInput>
+}
+
+export type DiaryUpdateWithoutCommentsInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
+  status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
+  moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  author?: Prisma.UserUpdateOneRequiredWithoutDiariesNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutDiaryNestedInput
+}
+
+export type DiaryUncheckedUpdateWithoutCommentsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  mood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tags?: Prisma.DiaryUpdatetagsInput | string[]
+  status?: Prisma.EnumDiaryStatusFieldUpdateOperationsInput | $Enums.DiaryStatus
+  moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
+  authorId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutDiaryNestedInput
+}
+
 export type DiaryCreateManyAuthorInput = {
   id?: number
   title: string
@@ -650,6 +849,8 @@ export type DiaryUpdateWithoutAuthorInput = {
   moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  likes?: Prisma.LikeUpdateManyWithoutDiaryNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryUncheckedUpdateWithoutAuthorInput = {
@@ -663,6 +864,8 @@ export type DiaryUncheckedUpdateWithoutAuthorInput = {
   moderationStatus?: Prisma.EnumDiaryModerationFieldUpdateOperationsInput | $Enums.DiaryModeration
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutDiaryNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutDiaryNestedInput
 }
 
 export type DiaryUncheckedUpdateManyWithoutAuthorInput = {
@@ -679,6 +882,44 @@ export type DiaryUncheckedUpdateManyWithoutAuthorInput = {
 }
 
 
+/**
+ * Count Type DiaryCountOutputType
+ */
+
+export type DiaryCountOutputType = {
+  likes: number
+  comments: number
+}
+
+export type DiaryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  likes?: boolean | DiaryCountOutputTypeCountLikesArgs
+  comments?: boolean | DiaryCountOutputTypeCountCommentsArgs
+}
+
+/**
+ * DiaryCountOutputType without action
+ */
+export type DiaryCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DiaryCountOutputType
+   */
+  select?: Prisma.DiaryCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * DiaryCountOutputType without action
+ */
+export type DiaryCountOutputTypeCountLikesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LikeWhereInput
+}
+
+/**
+ * DiaryCountOutputType without action
+ */
+export type DiaryCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CommentWhereInput
+}
+
 
 export type DiarySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -693,6 +934,9 @@ export type DiarySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   createdAt?: boolean
   updatedAt?: boolean
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  likes?: boolean | Prisma.Diary$likesArgs<ExtArgs>
+  comments?: boolean | Prisma.Diary$commentsArgs<ExtArgs>
+  _count?: boolean | Prisma.DiaryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["diary"]>
 
 export type DiarySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -742,6 +986,9 @@ export type DiarySelectScalar = {
 export type DiaryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "content" | "mood" | "image" | "tags" | "status" | "moderationStatus" | "authorId" | "createdAt" | "updatedAt", ExtArgs["result"]["diary"]>
 export type DiaryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  likes?: boolean | Prisma.Diary$likesArgs<ExtArgs>
+  comments?: boolean | Prisma.Diary$commentsArgs<ExtArgs>
+  _count?: boolean | Prisma.DiaryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type DiaryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -754,6 +1001,8 @@ export type $DiaryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   name: "Diary"
   objects: {
     author: Prisma.$UserPayload<ExtArgs>
+    likes: Prisma.$LikePayload<ExtArgs>[]
+    comments: Prisma.$CommentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1162,6 +1411,8 @@ readonly fields: DiaryFieldRefs;
 export interface Prisma__DiaryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  likes<T extends Prisma.Diary$likesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Diary$likesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  comments<T extends Prisma.Diary$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Diary$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1600,6 +1851,54 @@ export type DiaryDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Limit how many Diaries to delete.
    */
   limit?: number
+}
+
+/**
+ * Diary.likes
+ */
+export type Diary$likesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Like
+   */
+  select?: Prisma.LikeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Like
+   */
+  omit?: Prisma.LikeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LikeInclude<ExtArgs> | null
+  where?: Prisma.LikeWhereInput
+  orderBy?: Prisma.LikeOrderByWithRelationInput | Prisma.LikeOrderByWithRelationInput[]
+  cursor?: Prisma.LikeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LikeScalarFieldEnum | Prisma.LikeScalarFieldEnum[]
+}
+
+/**
+ * Diary.comments
+ */
+export type Diary$commentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Comment
+   */
+  select?: Prisma.CommentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Comment
+   */
+  omit?: Prisma.CommentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommentInclude<ExtArgs> | null
+  where?: Prisma.CommentWhereInput
+  orderBy?: Prisma.CommentOrderByWithRelationInput | Prisma.CommentOrderByWithRelationInput[]
+  cursor?: Prisma.CommentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommentScalarFieldEnum | Prisma.CommentScalarFieldEnum[]
 }
 
 /**

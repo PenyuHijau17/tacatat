@@ -66,3 +66,13 @@ export type Verification = Prisma.VerificationModel
  * 
  */
 export type Diary = Prisma.DiaryModel
+/**
+ * Model Like
+ * 
+ */
+export type Like = Prisma.LikeModel
+/**
+ * Model Comment
+ * 
+ */
+export type Comment = Prisma.CommentModel

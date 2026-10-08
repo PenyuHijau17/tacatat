@@ -55,7 +55,9 @@ export const ModelName = {
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
-  Diary: 'Diary'
+  Diary: 'Diary',
+  Like: 'Like',
+  Comment: 'Comment'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -148,6 +150,27 @@ export const DiaryScalarFieldEnum = {
 } as const
 
 export type DiaryScalarFieldEnum = (typeof DiaryScalarFieldEnum)[keyof typeof DiaryScalarFieldEnum]
+
+
+export const LikeScalarFieldEnum = {
+  id: 'id',
+  diaryId: 'diaryId',
+  userId: 'userId',
+  createdAt: 'createdAt'
+} as const
+
+export type LikeScalarFieldEnum = (typeof LikeScalarFieldEnum)[keyof typeof LikeScalarFieldEnum]
+
+
+export const CommentScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  diaryId: 'diaryId',
+  userId: 'userId',
+  createdAt: 'createdAt'
+} as const
+
+export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
 
 
 export const SortOrder = {

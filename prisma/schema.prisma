@@ -25,6 +25,8 @@ model User {
   sessions      Session[]
   accounts      Account[]
   diaries       Diary[]
+  likes         Like[]
+  comments      Comment[]
 }
 
 model Session {
@@ -97,4 +99,30 @@ model Diary {
   updatedAt        DateTime        @updatedAt
 
   author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  likes    Like[]
+  comments Comment[]
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  diaryId   Int
+  userId    String
+  createdAt DateTime @default(now())
+
+  diary Diary @relation(fields: [diaryId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([diaryId, userId])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  diaryId   Int
+  userId    String
+  createdAt DateTime @default(now())
+
+  diary Diary @relation(fields: [diaryId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
