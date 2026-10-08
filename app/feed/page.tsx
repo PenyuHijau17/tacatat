@@ -9,8 +9,8 @@ export default async function FeedPage() {
   });
 
   return (
-    <main>
-      <h1>Public Feed</h1>
+    <main className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-6">
+      <h1 className="text-2xl font-bold">Public Feed</h1>
 
       <p>
         <Link href="/explore">Search & Explore</Link>

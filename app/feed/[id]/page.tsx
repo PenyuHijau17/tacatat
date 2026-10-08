@@ -25,8 +25,8 @@ export default async function PublicDiaryPage({
   }
 
   return (
-    <main>
-      <h1>{diary.title}</h1>
+    <main className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-6">
+      <h1 className="text-2xl font-bold">{diary.title}</h1>
 
       <p>Oleh: {diary.author.name}</p>
       {diary.mood && <p>Mood: {diary.mood}</p>}

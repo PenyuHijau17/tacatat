@@ -38,8 +38,8 @@ export default function LoginPage() {
   }
 
   return (
-    <main>
-      <h1>Login</h1>
+    <main className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-6">
+      <h1 className="text-2xl font-bold">Login</h1>
 
       <form onSubmit={handleSubmit}>
         <div>

@@ -20,19 +20,22 @@ function parseFields(formData: FormData) {
   const moodRaw = String(formData.get("mood") ?? "").trim();
   const tagsRaw = String(formData.get("tags") ?? "").trim();
 
-  if (!title) {
-    throw new Error("Judul diary wajib diisi");
-  }
-  if (!content) {
-    throw new Error("Isi diary wajib diisi");
+  if (!title || !content) {
+    return {
+      ok: false as const,
+      error: !title ? "Judul diary wajib diisi" : "Isi diary wajib diisi",
+    };
   }
 
   return {
-    title,
-    content,
-    mood: moodRaw === "" ? null : moodRaw,
-    tags: tagsRaw === "" ? [] : tagsRaw.split(",").map((tag) => tag.trim()).filter((tag) => tag !== ""),
-    status: parseStatus(formData.get("status")),
+    ok: true as const,
+    fields: {
+      title,
+      content,
+      mood: moodRaw === "" ? null : moodRaw,
+      tags: tagsRaw === "" ? [] : tagsRaw.split(",").map((tag) => tag.trim()).filter((tag) => tag !== ""),
+      status: parseStatus(formData.get("status")),
+    },
   };
 }
 
@@ -42,11 +45,15 @@ export async function createDiary(formData: FormData) {
     redirect("/login");
   }
 
-  const fields = parseFields(formData);
+  const parsed = parseFields(formData);
+
+  if (!parsed.ok) {
+    redirect(`/diaries/new?error=${encodeURIComponent(parsed.error)}`);
+  }
 
   await prisma.diary.create({
     data: {
-      ...fields,
+      ...parsed.fields,
       authorId: session.user.id,
     },
   });
@@ -72,7 +79,13 @@ async function getOwnedDiary(id: number) {
 
 export async function updateDiary(id: number, formData: FormData) {
   await getOwnedDiary(id);
-  const fields = parseFields(formData);
+  const parsed = parseFields(formData);
+
+  if (!parsed.ok) {
+    redirect(`/diaries/${id}/edit?error=${encodeURIComponent(parsed.error)}`);
+  }
+
+  const fields = parsed.fields;
 
   await prisma.diary.update({
     where: { id },

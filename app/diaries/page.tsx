@@ -16,8 +16,8 @@ export default async function DiariesPage() {
   });
 
   return (
-    <main>
-      <h1>Private Space</h1>
+    <main className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-6">
+      <h1 className="text-2xl font-bold">Private Space</h1>
 
       <p>
         <Link href="/diaries/new">Tulis diary baru</Link>

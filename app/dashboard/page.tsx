@@ -11,8 +11,8 @@ export default async function DashboardPage() {
   }
 
   return (
-    <main>
-      <h1>Dashboard</h1>
+    <main className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-6">
+      <h1 className="text-2xl font-bold">Dashboard</h1>
 
       <p>Selamat datang, {session.user.name}</p>
       <p>Email: {session.user.email}</p>

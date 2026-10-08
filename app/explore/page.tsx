@@ -30,8 +30,8 @@ export default async function ExplorePage({
   });
 
   return (
-    <main>
-      <h1>Search & Explore</h1>
+    <main className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-6">
+      <h1 className="text-2xl font-bold">Search & Explore</h1>
 
       <form method="get" action="/explore">
         <div>
@@ -56,7 +56,7 @@ export default async function ExplorePage({
           />
         </div>
 
-        <button type="submit">Cari</button>
+        <button type="submit" className="rounded bg-zinc-900 px-4 py-2 text-white">Cari</button>
       </form>
 
       {diaries.length === 0 ? (

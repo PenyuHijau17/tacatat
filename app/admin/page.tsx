@@ -21,8 +21,8 @@ export default async function AdminPage() {
   });
 
   return (
-    <main>
-      <h1>Admin Dashboard</h1>
+    <main className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-6">
+      <h1 className="text-2xl font-bold">Admin Dashboard</h1>
 
       <p>Selamat datang, {session.user.name}</p>
       <p>Email: {session.user.email}</p>

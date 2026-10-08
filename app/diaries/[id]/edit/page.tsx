@@ -5,8 +5,10 @@ import { updateDiary } from "../../actions";
 
 export default async function EditDiaryPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
   const session = await getSession();
 
@@ -15,6 +17,7 @@ export default async function EditDiaryPage({
   }
 
   const { id } = await params;
+  const { error } = await searchParams;
   const diaryId = Number(id);
 
   if (!Number.isInteger(diaryId)) {
@@ -30,8 +33,10 @@ export default async function EditDiaryPage({
   const updateWithId = updateDiary.bind(null, diary.id);
 
   return (
-    <main>
-      <h1>Edit Diary</h1>
+    <main className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-6">
+      <h1 className="text-2xl font-bold">Edit Diary</h1>
+
+      {error && <p role="alert" className="text-red-600">{error}</p>}
 
       <form action={updateWithId}>
         <div>
@@ -77,14 +82,14 @@ export default async function EditDiaryPage({
 
         <div>
           <label htmlFor="status">Status</label>
-          <select id="status" name="status" defaultValue={diary.status}>
+          <select className="rounded border border-zinc-300 px-3 py-2" id="status" name="status" defaultValue={diary.status}>
             <option value="draft">Draft</option>
             <option value="private">Private</option>
             <option value="public">Public</option>
           </select>
         </div>
 
-        <button type="submit">Simpan Perubahan</button>
+        <button type="submit" className="rounded bg-zinc-900 px-4 py-2 text-white">Simpan Perubahan</button>
       </form>
     </main>
   );
