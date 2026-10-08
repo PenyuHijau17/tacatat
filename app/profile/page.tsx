@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSession } from "@/app/lib/session";
+import { updateProfile } from "./actions";
 
 export default async function ProfilePage() {
   const session = await getSession();
@@ -17,6 +18,19 @@ export default async function ProfilePage() {
       <p>Email: {session.user.email}</p>
       <p>Role: {session.user.role}</p>
       <p>Bergabung: {new Date(session.user.createdAt).toLocaleDateString("id-ID")}</p>
+
+      <h2 className="text-xl font-semibold">Ubah Nama</h2>
+      <form action={updateProfile}>
+        <input
+          name="name"
+          defaultValue={session.user.name}
+          required
+          className="w-full rounded border border-zinc-300 px-3 py-2"
+        />
+        <button type="submit" className="rounded bg-zinc-900 px-4 py-2 text-white">
+          Simpan
+        </button>
+      </form>
 
       <p>
         <Link href="/diaries">Diary Saya</Link>
